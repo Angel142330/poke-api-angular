@@ -12,4 +12,4 @@ Actualmente estamos en la versión 1.0.
 
 ## Demo
 **¡Echa un vistazo a nuestra aplicación en acción!** Haz clic aquí para ver la demostración de PokeApi.
-[PokeApi]([https://poke-api-angular17.netlify.app/])
+[PokeApi](https://poke-api-angular17.netlify.app/)
