@@ -1,0 +1,60 @@
+<div class="flex flex-wrap justify-center my-4">
+    @for (tipo of _typeService.pokemonTypes; track $index) {
+    <button [ngClass]="_typeService.getColorClass(tipo)"
+        class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
+        (click)="buscarPokemonPorTipo(tipo)">
+        {{ tipo | uppercase}}
+    </button>
+    }
+</div>
+
+@if (loading) {
+<div class="flex justify-center items-center min-h-[80vh]">
+    <h1 class="mb-2 text-4xl font-bold tracking-tight text-gray-500 dark:text-white">Elige tu tipo</h1>
+</div>
+}@else{
+
+
+
+<!-- Contenedor principal -->
+<div class="flex flex-wrap justify-center">
+    <!-- Tarjeta de Pokémon -->
+    @for (item of pokemons; track item.pokemon.name) {
+    <div class="m-4">
+        <div
+            class="max-w-xs mx-auto bg-white border-2 border-gray-300 rounded-lg shadow-lg overflow-hidden dark:bg-gray-800 text-center">
+            <div class="bg-gray-100">
+                <img class="h-auto w-full object-cover"
+                    [src]="item.details.sprites.other['official-artwork'].front_default" alt="{{item.pokemon.name}}" />
+            </div>
+            <div class="p-4">
+                <a href="#">
+                    <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-500 dark:text-white">
+                        #{{item.details?.id}} {{item?.pokemon.name | uppercase}}</h5>
+                </a>
+                <div class="flex flex-wrap justify-center ">
+                    @for (tipo of item.details.types; track tipo.type.name) {
+                    <span class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 "
+                        [ngClass]="_typeService.getColorClass(tipo.type.name)">
+                        {{tipo.type.name | uppercase }}
+                    </span>
+                    }
+                </div>
+                <br>
+                <p class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white bg-gray-500 mr-2 ">
+                    {{item.details.weight }} KG </p>
+                <p class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2  bg-gray-500">
+                    {{item.details.height }} Mts </p>
+
+            </div>
+        </div>
+    </div>
+    }
+</div>
+
+<button (click)="scrollToTop()"
+    class="fixed bottom-4 right-4 p-2 bg-gray-800 text-white rounded-full focus:outline-none">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+}

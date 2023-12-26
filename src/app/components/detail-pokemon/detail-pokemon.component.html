@@ -1,40 +1,46 @@
 @if (loading) {
-    <div class="flex justify-center items-center min-h-screen">
-        <h1 class="mb-2 text-4xl font-bold tracking-tight text-gray-500 dark:text-white">Loading ...</h1>
-    </div>
+<div class="flex justify-center items-center min-h-screen">
+    <h1 class="mb-2 text-4xl font-bold tracking-tight text-gray-500 dark:text-white">Loading ...</h1>
+</div>
 }
 
 @else if (error) {
-    <div class="flex justify-center items-center min-h-screen">
-        <h1 class="mb-2 text-4xl font-bold tracking-tight text-gray-500 dark:text-white">{{error}}</h1>
-    </div>
+<div class="flex justify-center items-center min-h-screen">
+    <h1 class="mb-2 text-4xl font-bold tracking-tight text-gray-500 dark:text-white">{{error}}</h1>
+</div>
 }
 
 @else if(pokemon) {
-    <div class="flex justify-center items-center min-h-[92vh]">
-    <div class="max-w-sm mx-auto bg-white border-2 border-gray-300 rounded-lg shadow-lg overflow-hidden dark:bg-gray-800 text-center">
+<div class="flex justify-center items-center min-h-[92vh]">
+    <div
+        class="max-w-sm mx-auto bg-white border-2 border-gray-300 rounded-lg shadow-lg overflow-hidden dark:bg-gray-800 text-center">
         <div class="flex justify-center items-center bg-gray-100">
-            <img class="h-auto w-full object-cover" [src]="pokemon.sprites.other['official-artwork'].front_default" alt="{{pokemon.name}}" />
-        </div> 
+            <img class="h-auto w-full object-cover" [src]="pokemon.sprites.other['official-artwork'].front_default"
+                alt="{{pokemon.name}}" />
+        </div>
         <div class="p-6">
             <a href="#">
-                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 dark:text-white">#{{pokemon?.id}}  {{pokemon?.name | uppercase}}</h5>
+                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-500 dark:text-white">#{{pokemon?.id}}
+                    {{pokemon?.name | uppercase}}</h5>
             </a>
 
             @for (tipo of pokemon.types; track $index) {
-                <span class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2" 
-                      [ngClass]="getColorClass(tipo.type.name)">
-                  {{tipo.type.name | uppercase }}
-                </span>
+            <span class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2 mb-2"
+                [ngClass]="_typeService.getColorClass(tipo.type.name)">
+                {{tipo.type.name | uppercase }}
+            </span>
             }
 
             <br>
-            <p class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white bg-gray-500 mr-2 " >{{pokemon.weight }} KG </p>
-            <p class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2  bg-gray-500" >{{pokemon.height }} Mts </p>
+            <p class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white bg-gray-500 mr-2 ">
+                {{pokemon.weight }} KG </p>
+            <p class="inline-block rounded-full px-3 py-1 text-sm font-semibold text-white mr-2  bg-gray-500">
+                {{pokemon.height }} Mts </p>
         </div>
 
         <div>
-            <button class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mb-5"  routerLink="/pokemon" >Volver </button>
+            <button class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded mb-5"
+                routerLink="/pokemon">Volver </button>
         </div>
     </div>
 </div>
