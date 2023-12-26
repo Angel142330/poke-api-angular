@@ -13,8 +13,3 @@ Actualmente estamos en la versión 1.0.
 ## Demo
 **¡Echa un vistazo a nuestra aplicación en acción!** Haz clic aquí para ver la demostración de PokeApi.
 [PokeApi](poke-api-angular17.netlify.app)
-## Cómo contribuir
-Si estás interesado en contribuir a este proyecto, por favor lee nuestras pautas de contribución.
-
-## Licencia
-Este proyecto está licenciado bajo los términos de la licencia MIT.
